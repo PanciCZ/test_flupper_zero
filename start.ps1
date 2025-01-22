@@ -1,3 +1,3 @@
 DELAY 500
-STRING notepad
+STRING powershell -Command "Start-Process 'https://www.seznam.cz'"
 ENTER
