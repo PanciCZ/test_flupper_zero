@@ -1,2 +1,3 @@
-# Skript pro otevření prohlížeče s webovou stránkou Seznam.cz
-Start-Process "https://www.seznam.cz"
+DELAY 500
+STRING notepad
+ENTER
