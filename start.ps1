@@ -1,3 +1,10 @@
-# https://jakoby.lol/n89
+# URL souboru ke stažení
+$sourceUrl = "https://uk.download.nvidia.com/Windows/Quadro_Certified/553.62/553.62-quadro-rtx-desktop-notebook-win10-win11-64bit-international-dch-whql.exe"
 
-(netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize | Out-String
+# Cesta ke složce Downloads aktuálního uživatele
+$destinationPath = "$env:USERPROFILE\Downloads\553.62-quadro-rtx-desktop-notebook-win10-win11-64bit-international-dch-whql.exe"
+
+# Stáhne soubor a uloží ho
+Invoke-WebRequest -Uri $sourceUrl -OutFile $destinationPath
+
+Write-Host "Soubor byl úspěšně stažen do: $destinationPath"
